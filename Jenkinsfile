@@ -34,6 +34,7 @@ node {
 	}
 	
 	stage('Sonar') {
+		withMaven(maven: 'maven') {
 		 withSonarQubeEnv('Sonar') {
 			if(isUnix()) {
  				sh "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -D sonar.projectKey=twitter-api" 
